@@ -59,8 +59,9 @@
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
   (add-to-list 'auto-mode-alist '("\\.[j|t]sx\\'" . web-mode))
   (general-define-key
-   :states '(normal)
-   "<escape>" #'keyboard-quit))
+   :states '(normal visual)
+   :keymaps 'override
+   "<escape>" #'keyboard-escape-quit))
 
 ;; --- Evil ---
 (use-package evil
