@@ -104,8 +104,7 @@
 
 ;; --- LSP ---
 (use-package lsp-mode
-  :hook ((typescript-mode . lsp)
-         (web-mode . lsp))
+  :hook ((prog-mode . lsp))
   :commands lsp)
 ;; optionally
 (use-package lsp-ui :commands lsp-ui-mode)
