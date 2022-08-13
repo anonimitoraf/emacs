@@ -21,7 +21,11 @@
 (setq package-enable-at-startup nil)
 
 ;; Install packages
-(setq +packages '(use-package evil vertico orderless))
+(setq +packages '(use-package
+                  evil
+                  vertico
+                  orderless
+                  consult))
 (dolist (+p +packages)
   (straight-use-package +p))
 
@@ -74,11 +78,28 @@
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
+;; --- Consult ---
+(use-package consult
+  :init
+  ;; Optionally configure the register formatting. This improves the register
+  ;; preview for `consult-register', `consult-register-load',
+  ;; `consult-register-store' and the Emacs built-ins.
+  (setq register-preview-delay 0.5
+        register-preview-function #'consult-register-format)
+  ;; Optionally tweak the register preview window.
+  ;; This adds thin lines, sorting and hides the mode line of the window.
+  (advice-add #'register-preview :override #'consult-register-window))
+
+;; --- (HEADING) ---
 ;; TODOs
 ;; - LSP
+
+;; - Keybindings (SPC leader)
+;; - Consult
+;; - Embark
 ;; - Marginalia
 ;; - Theme
-;; - Keybindings (SPC leader)
 ;; - Better jumper
 ;; - Magit
 ;; - Org
+;; - Window/buffer manipulation keybindings
