@@ -1,3 +1,5 @@
+(require '+theme)
+
 (defvar ++font-size nil)
 (defun ++screen-pixels->font-size (width-x-height)
   "Given WIDTH_X_HEIGHT, returns the adjusted font size"
