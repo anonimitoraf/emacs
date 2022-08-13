@@ -25,14 +25,21 @@
                   evil
                   vertico
                   orderless
-                  consult))
+                  consult
+                  lsp-mode
+                  lsp-ui
+                  ;; lang modes
+                  typescript-mode
+                  web-mode))
 (dolist (+p +packages)
   (straight-use-package +p))
 
 ;; --- General Settings ---
 (use-package emacs
   :init
-  (recentf-mode t))
+  (recentf-mode t)
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+  (add-to-list 'auto-mode-alist '("\\.[j|t]sx\\'" . web-mode)))
 
 ;; --- Evil ---
 (use-package evil
@@ -95,12 +102,18 @@
   ;; This adds thin lines, sorting and hides the mode line of the window.
   (advice-add #'register-preview :override #'consult-register-window))
 
+;; --- LSP ---
+(use-package lsp-mode
+  :hook ((typescript-mode . lsp)
+         (web-mode . lsp))
+  :commands lsp)
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+
 ;; --- (HEADING) ---
 ;; TODOs
 ;; - LSP
-
 ;; - Keybindings (SPC leader)
-;; - Consult
 ;; - Embark
 ;; - Marginalia
 ;; - Theme
