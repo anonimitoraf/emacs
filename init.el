@@ -1,5 +1,10 @@
 ;;; init.el --- Description -*- lexical-binding: t; -*-
 
+(add-to-list 'load-path "./sections")
+
+(require 'cl-lib)
+(require '+appearance)
+
 ;; Startup optimizations
 (setq gc-cons-threshold 10000000)
 (add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
@@ -22,22 +27,24 @@
 
 ;; Install packages
 (setq +packages '(use-package
-                  evil
-                  vertico
-                  orderless
-                  consult
-                  lsp-mode
-                  lsp-ui
-                  ;; lang modes
-                  typescript-mode
-                  web-mode))
+                   evil
+                   vertico
+                   orderless
+                   consult
+                   lsp-mode
+                   lsp-ui
+                   ;; lang modes
+                   typescript-mode
+                   web-mode))
 (dolist (+p +packages)
   (straight-use-package +p))
 
 ;; --- General Settings ---
+
 (use-package emacs
   :init
   (recentf-mode t)
+  (++setup-font)
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
   (add-to-list 'auto-mode-alist '("\\.[j|t]sx\\'" . web-mode)))
 
@@ -76,8 +83,8 @@
   (setq enable-recursive-minibuffers t)
 
   (setq read-file-name-completion-ignore-case t
-      read-buffer-completion-ignore-case t
-      completion-ignore-case t))
+        read-buffer-completion-ignore-case t
+        completion-ignore-case t))
 
 ;; --- Orderless ---
 ;; Optionally use the `orderless' completion style.
