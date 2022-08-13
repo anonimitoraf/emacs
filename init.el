@@ -264,6 +264,11 @@
   (setq cape-dabbrev-min-length 2
         cape-dabbrev-check-other-buffers 'some))
 
+;; --- Keycast ---
+(use-package keycast
+  :config
+  (keycast-mode +1))
+
 ;; --- (HEADING) ---
 ;; TODOs
 ;; - Corfu
