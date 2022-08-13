@@ -29,6 +29,11 @@
 (dolist (+p +packages)
   (straight-use-package +p))
 
+;; --- General Settings ---
+(use-package emacs
+  :init
+  (recentf-mode t))
+
 ;; --- Evil ---
 (use-package evil
   :config (evil-mode t))
