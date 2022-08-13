@@ -79,7 +79,8 @@
   :init
   (setq vertico-posframe-border-width 1
         vertico-posframe-parameters '((left-fringe . 10)
-                                      (right-fringe . 10))))
+                                      (right-fringe . 10))
+        vertico-posframe-height 20))
 (use-package vertico
   :init
   (when (display-graphic-p)
