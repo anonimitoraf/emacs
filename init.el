@@ -2,7 +2,7 @@
 
 ;; (setq debug-on-error t)
 
-(add-to-list 'load-path "./sections")
+(add-to-list 'load-path (expand-file-name "sections" user-emacs-directory))
 
 (require 'cl-lib)
 (require '+appearance)
